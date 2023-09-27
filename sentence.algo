@@ -1,0 +1,32 @@
+ALGORITHM sentence
+VAR
+    sentence : STRING
+    length : INTEGER
+    NB_C : INTEGER
+    NB_W : INTEGER
+    NB_V : INTEGER
+BEGIN
+    NB_C := 0  // Initialize character count to zero
+    NB_W := 0  // Initialize word count to zero
+    NB_V := 0  // Initialize vowel count to zero
+    
+    Write ("Enter a sentence: ")
+    Read (sentence)
+    
+    length := Length(sentence)  // Get the length of the sentence
+    
+    FOR i FROM 1 TO length DO
+        NB_C := NB_C + 1  // Increment character count for each character in the sentence
+        
+        IF sentence[i] = ' ' AND i > 1 AND sentence[i - 1] <> ' ' THEN
+            NB_W := NB_W + 1  // Increment word count when a space is encountered
+        END_IF
+        
+        IF sentence[i] IN {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'} THEN
+            NB_V := NB_V + 1  // Increment vowel count for each vowel encountered
+        END_IF
+    END_FOR
+    Write ("The length of the sentence (the number of characters): ", NB_C)
+    Write ("The number of words in the sentence: ", NB_W)
+    Write ("The number of vowels in the sentence: ", NB_V)
+END
